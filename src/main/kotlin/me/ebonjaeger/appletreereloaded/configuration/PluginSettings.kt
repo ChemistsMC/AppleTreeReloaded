@@ -35,7 +35,7 @@ object PluginSettings : SettingsHolder
 
     @JvmField
     @Comment("Should leaves drop on block break")
-    val DROP_LEAVES: Property<Boolean> = newProperty("drop-leaves", true)
+    val DROP_LEAVES: Property<Boolean> = newProperty("drop-leaves", false)
 
     @JvmField
     @Comment("Should leaves drop on leaf decay")

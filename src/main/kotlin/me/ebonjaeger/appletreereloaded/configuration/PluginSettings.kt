@@ -19,7 +19,7 @@ object PluginSettings : SettingsHolder
 
     @JvmField
     @Comment("Should items be dropped on normal leaf decay")
-    val DROP_ON_DECAY: Property<Boolean> = newProperty("drop-on-decay", false)
+    val DROP_ON_DECAY: Property<Boolean> = newProperty("drop-on-decay", true)
 
     @JvmField
     @Comment("Regular apple drop chance (between 0 and 100)")
@@ -34,6 +34,10 @@ object PluginSettings : SettingsHolder
     val COCOA_CHANCE: Property<Double> = DoubleProperty("cocoa-chance", 0.02)
 
     @JvmField
-    @Comment("Leaf drop chance (between 0 and 100)")
-    val LEAF_CHANCE: Property<Double> = DoubleProperty("leaf-chance", 0.05)
+    @Comment("Should leaves drop on block break")
+    val DROP_LEAVES: Property<Boolean> = newProperty("drop-leaves", true)
+
+    @JvmField
+    @Comment("Should leaves drop on leaf decay")
+    val DROP_LEAVES_DECAY: Property<Boolean> = newProperty("drop-leaves-decay", false)
 }

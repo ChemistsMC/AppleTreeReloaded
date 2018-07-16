@@ -28,11 +28,17 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
+val bukkitVersion = "1.12.2-R0.1-SNAPSHOT"
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
-    testCompile("junit", "junit", "4.12")
 
-    compileOnly("org.spigotmc:spigot-api:1.12.2-R0.1-SNAPSHOT")
+    testCompile("junit", "junit", "4.12")
+    testCompile("com.natpryce:hamkrest:1.4.2.2")
+    testCompile("org.spigotmc:spigot-api:" + bukkitVersion)
+
+    compileOnly("org.spigotmc:spigot-api:" + bukkitVersion)
+
+    implementation("ch.jalu:configme:0.4.1")
 }
 
 configure<JavaPluginConvention> {

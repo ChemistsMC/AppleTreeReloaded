@@ -1,0 +1,18 @@
+# Worlds listed here will be ignored by the plugin
+ignored-worlds:
+- creative
+
+# Should items be dropped on normal leaf decay
+drop-on-decay: false
+
+# Regular apple drop chance (between 0 and 100)
+apple-chance: 5
+
+# Golden apple drop chance (between 0 and 100)
+golden-apple-chance: 1
+
+# Cocoa drop chance (between 0 and 100)
+cocoa-chance: 2
+
+# Leaf drop chance (between 0 and 100)
+leaf-chance: 5

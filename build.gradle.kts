@@ -55,7 +55,6 @@ shadowJar.apply {
         put("Implementation-Version", version)
     }
 
-    baseName = project.name + "-" + version
     classifier = null
 
     relocate("kotlin", "me.ebonjaeger.appletreereloaded.kotlin")

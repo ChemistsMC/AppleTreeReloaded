@@ -2,3 +2,4 @@ name: AppleTreeReloaded
 version: 1.0
 main: me.ebonjaeger.appletreereloaded.AppleTreeReloaded
 authors: [EbonJaeger]
+api-version: 1.13

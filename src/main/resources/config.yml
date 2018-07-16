@@ -5,14 +5,14 @@ ignored-worlds:
 # Should items be dropped on normal leaf decay
 drop-on-decay: false
 
-# Regular apple drop chance (between 0 and 100)
-apple-chance: 5
+# Regular apple drop chance (between 0 and 1)
+apple-chance: 0.05
 
-# Golden apple drop chance (between 0 and 100)
-golden-apple-chance: 1
+# Golden apple drop chance (between 0 and 1)
+golden-apple-chance: 0.05
 
-# Cocoa drop chance (between 0 and 100)
-cocoa-chance: 2
+# Cocoa drop chance (between 0 and 1)
+cocoa-chance: 0.02
 
-# Leaf drop chance (between 0 and 100)
-leaf-chance: 5
+# Leaf drop chance (between 0 and 1)
+leaf-chance: 0.05

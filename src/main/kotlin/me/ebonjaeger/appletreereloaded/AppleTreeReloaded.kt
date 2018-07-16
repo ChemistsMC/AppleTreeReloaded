@@ -1,6 +1,8 @@
 package me.ebonjaeger.appletreereloaded
 
 import me.ebonjaeger.appletreereloaded.configuration.Settings
+import me.ebonjaeger.appletreereloaded.listener.BlockBreakListener
+import me.ebonjaeger.appletreereloaded.listener.LeafDecayListener
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.nio.file.Files
@@ -17,5 +19,8 @@ class AppleTreeReloaded : JavaPlugin()
         }
 
         val settings = Settings.create(File(dataFolder, "config.yml"))
+
+        server.pluginManager.registerEvents(BlockBreakListener(settings), this)
+        server.pluginManager.registerEvents(LeafDecayListener(settings), this)
     }
 }

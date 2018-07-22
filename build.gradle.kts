@@ -28,7 +28,7 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
-val bukkitVersion = "1.13-pre7-R0.1-SNAPSHOT"
+val bukkitVersion = "1.13-R0.1-SNAPSHOT"
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 

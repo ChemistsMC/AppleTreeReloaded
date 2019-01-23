@@ -1,5 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 buildscript {
     repositories {
@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     idea
-    kotlin("jvm") version "1.2.51"
+    kotlin("jvm") version "1.3.20"
 }
 
 apply {

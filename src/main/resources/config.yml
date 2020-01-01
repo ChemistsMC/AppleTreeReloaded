@@ -19,3 +19,6 @@ drop-leaves: false
 
 # Should leaves drop on leaf decay
 drop-leaves-decay: false
+
+# Sapling drop chance (between 0 and 1)
+sapling-chance: 0.05

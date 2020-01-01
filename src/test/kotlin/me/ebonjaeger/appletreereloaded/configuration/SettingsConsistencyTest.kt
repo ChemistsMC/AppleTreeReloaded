@@ -15,7 +15,7 @@ import org.junit.Test
 class SettingsConsistencyTest
 {
 
-    private val configData = ConfigurationDataBuilder.collectData(PluginSettings::class.java)
+    private val configData = ConfigurationDataBuilder.createConfiguration(PluginSettings::class.java)
 
     private val yamlConfig = YamlConfiguration.loadConfiguration(getFromJar("/config.yml"))
 

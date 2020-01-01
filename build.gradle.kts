@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     idea
-    kotlin("jvm") version "1.3.20"
+    kotlin("jvm") version "1.3.61"
 }
 
 apply {
@@ -20,7 +20,7 @@ apply {
 }
 
 group = "me.ebonjaeger"
-version = "1.0.1"
+version = "1.1.0"
 
 repositories {
     mavenCentral()
@@ -28,7 +28,7 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
-val bukkitVersion = "1.13-R0.1-SNAPSHOT"
+val bukkitVersion = "1.15-R0.1-SNAPSHOT"
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
@@ -38,7 +38,7 @@ dependencies {
 
     compileOnly("org.spigotmc:spigot-api:" + bukkitVersion)
 
-    implementation("ch.jalu:configme:0.4.1")
+    implementation("ch.jalu:configme:1.1.0")
 }
 
 configure<JavaPluginConvention> {

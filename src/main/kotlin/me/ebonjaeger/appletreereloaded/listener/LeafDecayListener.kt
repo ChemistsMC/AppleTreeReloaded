@@ -1,5 +1,6 @@
 package me.ebonjaeger.appletreereloaded.listener
 
+import me.ebonjaeger.appletreereloaded.Utils
 import me.ebonjaeger.appletreereloaded.configuration.PluginSettings
 import me.ebonjaeger.appletreereloaded.configuration.Settings
 import org.bukkit.Material
@@ -42,6 +43,12 @@ class LeafDecayListener(private val settings: Settings) : Listener
         if (settings.getProperty(PluginSettings.DROP_LEAVES_DECAY))
         {
             world.dropItemNaturally(block.location, ItemStack(block.type, 1))
+        }
+
+        // Check for sapling drop
+        if (settings.getProperty(PluginSettings.SAPLING_CHANCE) > 0.0) {
+            val sapling = ItemStack(Utils.getSaplingType(block.type), 1)
+            world.dropItemNaturally(block.location, sapling)
         }
     }
 }

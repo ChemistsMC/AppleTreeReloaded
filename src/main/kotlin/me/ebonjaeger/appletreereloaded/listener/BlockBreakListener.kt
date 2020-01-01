@@ -46,5 +46,11 @@ class BlockBreakListener(private val settings: Settings) : Listener
         {
             world.dropItemNaturally(block.location, ItemStack(block.type, 1))
         }
+
+        // Check for sapling drop
+        if (settings.getProperty(PluginSettings.SAPLING_CHANCE) > 0.0) {
+            val sapling = ItemStack(Utils.getSaplingType(block.type), 1)
+            world.dropItemNaturally(block.location, sapling)
+        }
     }
 }

@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     idea
-    kotlin("jvm") version "1.3.61"
+    kotlin("jvm") version "1.3.70"
 }
 
 apply {
@@ -20,7 +20,7 @@ apply {
 }
 
 group = "me.ebonjaeger"
-version = "1.1.1"
+version = "1.1.2"
 
 repositories {
     mavenCentral()

@@ -12,7 +12,7 @@ buildscript {
 
 plugins {
     idea
-    kotlin("jvm") version "1.3.70"
+    kotlin("jvm") version "1.4.30"
 }
 
 apply {
@@ -32,13 +32,13 @@ val bukkitVersion = "1.15-R0.1-SNAPSHOT"
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    testCompile("junit", "junit", "4.12")
-    testCompile("com.natpryce:hamkrest:1.4.2.2")
-    testCompile("org.spigotmc:spigot-api:" + bukkitVersion)
+    testImplementation("junit", "junit", "4.12")
+    testImplementation("com.natpryce:hamkrest:1.4.2.2")
+    testImplementation("org.spigotmc:spigot-api:$bukkitVersion")
 
-    compileOnly("org.spigotmc:spigot-api:" + bukkitVersion)
+    compileOnly("org.spigotmc:spigot-api:$bukkitVersion")
 
-    implementation("ch.jalu:configme:1.1.0")
+    implementation("ch.jalu:configme:1.2.0")
 }
 
 configure<JavaPluginConvention> {
@@ -52,10 +52,8 @@ val shadowJar: ShadowJar by tasks
 shadowJar.apply {
     manifest.attributes.apply {
         put("Implementation-Title", project.name)
-        put("Implementation-Version", version)
+        put("Implementation-Version", project.version)
     }
-
-    classifier = null
 
     relocate("kotlin", "me.ebonjaeger.appletreereloaded.kotlin")
 }

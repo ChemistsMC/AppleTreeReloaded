@@ -14,24 +14,35 @@ class LeafDecayListener(private val settings: Settings) : Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     fun onLeafDecay(event: LeavesDecayEvent) {
-        if (event.isCancelled || !settings.getProperty(PluginSettings.DROP_ON_DECAY)) return
+        if (event.isCancelled || !settings.getProperty(PluginSettings.DROP_ON_DECAY)) {
+            return
+        }
 
         val block = event.block
         val world = block.world
 
-        if (settings.getProperty(PluginSettings.IGNORED_WORLDS).contains(world.name)) return
+        if (settings.getProperty(PluginSettings.IGNORED_WORLDS).contains(world.name)) {
+            return
+        }
 
         val rand = Math.random() // Generates a number greater than or equal to 0.0 less than 1.0
 
-        // Check chances for apple and cocoa drops
-        if (rand <= settings.getProperty(PluginSettings.APPLE_CHANCE)) {
-            world.dropItemNaturally(block.location, ItemStack(Material.APPLE, 1))
-        } else if (settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE) > 0.0 &&
-                rand <= settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE)) {
-            world.dropItemNaturally(block.location, ItemStack(Material.GOLDEN_APPLE, 1))
-        } else if (settings.getProperty(PluginSettings.COCOA_CHANCE) > 0.0 &&
-                rand <= settings.getProperty(PluginSettings.COCOA_CHANCE)) {
-            world.dropItemNaturally(block.location, ItemStack(Material.COCOA_BEANS, 1))
+        // See if we should drop extra apples
+        if (block.type == Material.OAK_LEAVES || !settings.getProperty(PluginSettings.MATCH_DROPS)) {
+            if (rand <= settings.getProperty(PluginSettings.APPLE_CHANCE)) {
+                world.dropItemNaturally(block.location, ItemStack(Material.APPLE, 1))
+            } else if (settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE) > 0.0 &&
+                    rand <= settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE)) {
+                world.dropItemNaturally(block.location, ItemStack(Material.GOLDEN_APPLE, 1))
+            }
+        }
+
+        // See if we should drop extra cocoa
+        if (block.type == Material.JUNGLE_LEAVES || !settings.getProperty(PluginSettings.MATCH_DROPS)) {
+            if (settings.getProperty(PluginSettings.COCOA_CHANCE) > 0.0 &&
+                    rand <= settings.getProperty(PluginSettings.COCOA_CHANCE)) {
+                world.dropItemNaturally(block.location, ItemStack(Material.COCOA_BEANS, 1))
+            }
         }
 
         // Check for leaf drop

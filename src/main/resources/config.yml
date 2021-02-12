@@ -2,6 +2,10 @@
 ignored-worlds:
 - creative
 
+# Set to true if only oak trees should drop extra apples and
+# only jungle trees should drop extra cocoa
+match-drops: true
+
 # Should items be dropped on normal leaf decay
 drop-on-decay: true
 

@@ -17,6 +17,11 @@ object PluginSettings : SettingsHolder {
     val IGNORED_WORLDS: Property<List<String>> = newListProperty("ignored-worlds", "creative")
 
     @JvmField
+    @Comment("Set to true if only oak trees should drop extra apples and",
+            "only jungle trees should drop extra cocoa")
+    val MATCH_DROPS: Property<Boolean> = newProperty("match-drops", true)
+
+    @JvmField
     @Comment("Should items be dropped on normal leaf decay")
     val DROP_ON_DECAY: Property<Boolean> = newProperty("drop-on-decay", true)
 

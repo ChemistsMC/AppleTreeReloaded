@@ -7,8 +7,7 @@ import java.net.URISyntaxException
 /**
  * Test utilities.
  */
-object TestHelper
-{
+object TestHelper {
 
     /**
      * Return a [File] to a file in the JAR's resources (main or test).
@@ -16,22 +15,18 @@ object TestHelper
      * @param path The absolute path to the file
      * @return The project file
      */
-    fun getFromJar(path: String): File
-    {
+    fun getFromJar(path: String): File {
         val uri = getUriOrThrow(path)
         return File(uri.path)
     }
 
-    private fun getUriOrThrow(path: String): URI
-    {
-        val url = TestHelper.javaClass.getResource(path) ?:
-        throw IllegalStateException("File '$path' could not be loaded")
+    private fun getUriOrThrow(path: String): URI {
+        val url = TestHelper.javaClass.getResource(path)
+                ?: throw IllegalStateException("File '$path' could not be loaded")
 
-        try
-        {
+        try {
             return URI(url.toString())
-        } catch (ex: URISyntaxException)
-        {
+        } catch (ex: URISyntaxException) {
             throw IllegalStateException("File '$path' cannot be converted to URI")
         }
     }

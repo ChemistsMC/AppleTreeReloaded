@@ -10,12 +10,10 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 
-class BlockBreakListener(private val settings: Settings) : Listener
-{
+class BlockBreakListener(private val settings: Settings) : Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
-    fun onBlockBreak(event: BlockBreakEvent)
-    {
+    fun onBlockBreak(event: BlockBreakEvent) {
         if (event.isCancelled) return
 
         val block = event.block
@@ -28,22 +26,18 @@ class BlockBreakListener(private val settings: Settings) : Listener
         val rand = Math.random() // Generates a number greater than or equal to 0.0 less than 1.0
 
         // Check chances for apple and cocoa drops
-        if (rand <= settings.getProperty(PluginSettings.APPLE_CHANCE))
-        {
+        if (rand <= settings.getProperty(PluginSettings.APPLE_CHANCE)) {
             world.dropItemNaturally(block.location, ItemStack(Material.APPLE, 1))
         } else if (settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE) > 0.0 &&
-                rand <= settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE))
-        {
+                rand <= settings.getProperty(PluginSettings.GOLDEN_APPLE_CHANCE)) {
             world.dropItemNaturally(block.location, ItemStack(Material.GOLDEN_APPLE, 1))
         } else if (settings.getProperty(PluginSettings.COCOA_CHANCE) > 0.0 &&
-                rand <= settings.getProperty(PluginSettings.COCOA_CHANCE))
-        {
+                rand <= settings.getProperty(PluginSettings.COCOA_CHANCE)) {
             world.dropItemNaturally(block.location, ItemStack(Material.COCOA_BEANS, 1))
         }
 
         // Check for leaf drop
-        if (settings.getProperty(PluginSettings.DROP_LEAVES))
-        {
+        if (settings.getProperty(PluginSettings.DROP_LEAVES)) {
             world.dropItemNaturally(block.location, ItemStack(block.type, 1))
         }
 

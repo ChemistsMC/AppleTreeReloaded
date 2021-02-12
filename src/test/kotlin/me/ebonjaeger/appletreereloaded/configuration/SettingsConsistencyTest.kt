@@ -12,24 +12,21 @@ import org.junit.Test
 /**
  * Tests that the config.yml file corresponds with the settings holder classes in the code.
  */
-class SettingsConsistencyTest
-{
+class SettingsConsistencyTest {
 
     private val configData = ConfigurationDataBuilder.createConfiguration(PluginSettings::class.java)
 
     private val yamlConfig = YamlConfiguration.loadConfiguration(getFromJar("/config.yml"))
 
     @Test
-    fun shouldContainAllPropertiesWithSameDefaultValue()
-    {
+    fun shouldContainAllPropertiesWithSameDefaultValue() {
         // given / when / then
         configData.properties.forEach {
             assertThat("config.yml does not have property for $it",
                     yamlConfig.contains(it.path), equalTo(true))
 
             // TODO: Figure out a way to make this work with the new logging level property
-            if (it.path != "logging-level")
-            {
+            if (it.path != "logging-level") {
                 assertThat("config.yml does not have same default value for $it",
                         it.defaultValue, equalTo(yamlConfig[it.path]))
             }
@@ -37,8 +34,7 @@ class SettingsConsistencyTest
     }
 
     @Test
-    fun shouldNotHaveUnknownProperties()
-    {
+    fun shouldNotHaveUnknownProperties() {
         // given
         val keysInYaml = yamlConfig.getKeys(true)
 

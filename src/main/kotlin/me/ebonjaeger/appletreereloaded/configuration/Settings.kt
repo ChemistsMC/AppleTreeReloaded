@@ -19,11 +19,9 @@ import java.io.File
 class Settings private constructor(file: YamlFileResource,
                                    configurationData: ConfigurationData,
                                    migrator: MigrationService) :
-        SettingsManagerImpl(file, configurationData, migrator)
-{
+        SettingsManagerImpl(file, configurationData, migrator) {
 
-    companion object
-    {
+    companion object {
 
         /** All [SettingsHolder] classes. */
         private val PROPERTY_HOLDERS = arrayOf(PluginSettings::class.java)
@@ -34,8 +32,7 @@ class Settings private constructor(file: YamlFileResource,
          * @param file the config file to load
          * @return settings instance for the file
          */
-        fun create(file: File): Settings
-        {
+        fun create(file: File): Settings {
             val fileResource = YamlFileResource(file)
             val configurationData = ConfigurationDataBuilder.createConfiguration(*PROPERTY_HOLDERS)
             val migrator = PlainMigrationService()

@@ -2,8 +2,7 @@ package me.ebonjaeger.appletreereloaded
 
 import org.bukkit.Material
 
-object Utils
-{
+object Utils {
 
     fun isLeafBlock(type: Material): Boolean = type == Material.ACACIA_LEAVES ||
             type == Material.BIRCH_LEAVES ||

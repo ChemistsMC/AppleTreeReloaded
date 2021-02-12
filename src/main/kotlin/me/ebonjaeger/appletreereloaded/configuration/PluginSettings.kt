@@ -10,8 +10,7 @@ import ch.jalu.configme.properties.PropertyInitializer.newProperty
 /**
  * Object to hold settings for general plugin operation.
  */
-object PluginSettings : SettingsHolder
-{
+object PluginSettings : SettingsHolder {
 
     @JvmField
     @Comment("Worlds listed here will be ignored by the plugin")

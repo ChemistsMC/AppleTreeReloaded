@@ -7,14 +7,11 @@ import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.nio.file.Files
 
-class AppleTreeReloaded : JavaPlugin()
-{
+class AppleTreeReloaded : JavaPlugin() {
 
-    override fun onEnable()
-    {
+    override fun onEnable() {
         // Create config file if it does not exist
-        if (!Files.exists(File(dataFolder, "config.yml").toPath()))
-        {
+        if (!Files.exists(File(dataFolder, "config.yml").toPath())) {
             saveResource("config.yml", false)
         }
 

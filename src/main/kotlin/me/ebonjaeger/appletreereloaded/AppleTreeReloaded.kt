@@ -1,5 +1,7 @@
 package me.ebonjaeger.appletreereloaded
 
+import co.aikar.commands.PaperCommandManager
+import me.ebonjaeger.appletreereloaded.command.GeneralCommands
 import me.ebonjaeger.appletreereloaded.configuration.Settings
 import me.ebonjaeger.appletreereloaded.listener.BlockBreakListener
 import me.ebonjaeger.appletreereloaded.listener.LeafDecayListener
@@ -19,5 +21,8 @@ class AppleTreeReloaded : JavaPlugin() {
 
         server.pluginManager.registerEvents(BlockBreakListener(settings), this)
         server.pluginManager.registerEvents(LeafDecayListener(settings), this)
+
+        val commandManager = PaperCommandManager(this)
+        commandManager.registerCommand(GeneralCommands(settings))
     }
 }

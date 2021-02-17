@@ -24,6 +24,7 @@ version = "1.2.0"
 
 repositories {
     mavenCentral()
+    maven("https://repo.aikar.co/content/groups/aikar/")
     maven("https://hub.spigotmc.org/nexus/content/groups/public/")
     maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
@@ -39,6 +40,7 @@ dependencies {
     compileOnly("org.spigotmc:spigot-api:$bukkitVersion")
 
     implementation("ch.jalu:configme:1.2.0")
+    implementation("co.aikar:acf-paper:0.5.0-SNAPSHOT")
 }
 
 configure<JavaPluginConvention> {
@@ -48,6 +50,12 @@ tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
 }
 
+tasks.register<Copy>("filter") {
+    from("src/main/resources/plugin.yml")
+    into("$buildDir/resources/main")
+    expand("version" to project.version)
+}
+
 val shadowJar: ShadowJar by tasks
 shadowJar.apply {
     manifest.attributes.apply {
@@ -55,5 +63,7 @@ shadowJar.apply {
         put("Implementation-Version", project.version)
     }
 
+    relocate("co.aikar.commands", "me.ebonjaeger.appletreereloaded.acf")
+    relocate("co.aikar.locales", "me.ebonjaeger.appletreereloaded.locales")
     relocate("kotlin", "me.ebonjaeger.appletreereloaded.kotlin")
 }

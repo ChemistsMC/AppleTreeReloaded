@@ -1,5 +1,18 @@
 name: AppleTreeReloaded
-version: 1.1.1
+version: ${version}
 main: me.ebonjaeger.appletreereloaded.AppleTreeReloaded
 authors: [EbonJaeger]
 api-version: 1.13
+
+commands:
+  appletree:
+    description: Commands for AppleTreeReloaded
+    aliases: [at]
+
+permissions:
+  appletreereloaded.admin:
+    default: op
+    children:
+      appletreereloaded.command.reload: true
+  appletreereloaded.command.reload:
+    default: false

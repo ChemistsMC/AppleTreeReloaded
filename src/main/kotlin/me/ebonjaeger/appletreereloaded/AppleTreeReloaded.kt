@@ -13,12 +13,13 @@ import java.nio.file.Files
 class AppleTreeReloaded : JavaPlugin() {
 
     override fun onEnable() {
+        val file = File(dataFolder, "config.yml")
+
         // Create config file if it does not exist
-        if (!Files.exists(File(dataFolder, "config.yml").toPath())) {
+        if (!Files.exists(file.toPath())) {
             saveResource("config.yml", false)
         }
 
-        val file = File(dataFolder, "config.yml")
         val settings = SettingsManagerBuilder
             .withYamlFile(file)
             .configurationData(PluginSettings::class.java)

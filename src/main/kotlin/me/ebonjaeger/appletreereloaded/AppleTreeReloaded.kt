@@ -1,8 +1,9 @@
 package me.ebonjaeger.appletreereloaded
 
+import ch.jalu.configme.SettingsManagerBuilder
 import co.aikar.commands.PaperCommandManager
 import me.ebonjaeger.appletreereloaded.command.GeneralCommands
-import me.ebonjaeger.appletreereloaded.configuration.Settings
+import me.ebonjaeger.appletreereloaded.configuration.PluginSettings
 import me.ebonjaeger.appletreereloaded.listener.BlockBreakListener
 import me.ebonjaeger.appletreereloaded.listener.LeafDecayListener
 import org.bukkit.plugin.java.JavaPlugin
@@ -17,7 +18,12 @@ class AppleTreeReloaded : JavaPlugin() {
             saveResource("config.yml", false)
         }
 
-        val settings = Settings.create(File(dataFolder, "config.yml"))
+        val file = File(dataFolder, "config.yml")
+        val settings = SettingsManagerBuilder
+            .withYamlFile(file)
+            .configurationData(PluginSettings::class.java)
+            .useDefaultMigrationService()
+            .create()
 
         server.pluginManager.registerEvents(BlockBreakListener(settings), this)
         server.pluginManager.registerEvents(LeafDecayListener(settings), this)

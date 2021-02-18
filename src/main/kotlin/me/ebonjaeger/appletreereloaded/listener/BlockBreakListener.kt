@@ -1,8 +1,8 @@
 package me.ebonjaeger.appletreereloaded.listener
 
+import ch.jalu.configme.SettingsManager
 import me.ebonjaeger.appletreereloaded.Utils
 import me.ebonjaeger.appletreereloaded.configuration.PluginSettings
-import me.ebonjaeger.appletreereloaded.configuration.Settings
 import org.bukkit.Material
 import org.bukkit.event.EventHandler
 import org.bukkit.event.EventPriority
@@ -10,7 +10,7 @@ import org.bukkit.event.Listener
 import org.bukkit.event.block.BlockBreakEvent
 import org.bukkit.inventory.ItemStack
 
-class BlockBreakListener(private val settings: Settings) : Listener {
+class BlockBreakListener(private val settings: SettingsManager) : Listener {
 
     @EventHandler(priority = EventPriority.MONITOR)
     fun onBlockBreak(event: BlockBreakEvent) {

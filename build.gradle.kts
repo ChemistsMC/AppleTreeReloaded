@@ -1,22 +1,10 @@
 import com.github.jengelman.gradle.plugins.shadow.tasks.ShadowJar
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath("com.github.jengelman.gradle.plugins:shadow:2.0.4")
-    }
-}
-
 plugins {
     idea
-    kotlin("jvm") version "1.4.30"
-}
-
-apply {
-    plugin("com.github.johnrengelman.plugin-shadow")
+    kotlin("jvm") version "1.5.21"
+    id("com.github.johnrengelman.shadow") version "6.1.0"
 }
 
 group = "me.ebonjaeger"
@@ -29,7 +17,7 @@ repositories {
     maven("https://oss.sonatype.org/content/repositories/snapshots")
 }
 
-val bukkitVersion = "1.15-R0.1-SNAPSHOT"
+val bukkitVersion = "1.17-R0.1-SNAPSHOT"
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
